@@ -1,0 +1,23 @@
+{
+    "name": "forphp/laravel-schema-to-form",
+    "description": "Generate Blade forms and FormRequest classes from DB or JSON schemas!",
+    "type": "library",
+    "require": {
+        "illuminate/support": "13.0.x-dev",
+        "illuminate/console": "13.0.x-dev",
+        "illuminate/database": "13.0.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Forphp\\LaravelSchemaToForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "M B Parvez (Ron)",
+            "email": "mbparvezme@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

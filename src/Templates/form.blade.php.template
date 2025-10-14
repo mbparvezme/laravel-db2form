@@ -1,0 +1,12 @@
+{{-- 
+    Auto-generated Blade form
+    Title: {{title}}
+--}}
+
+<form method="{{method}}" action="">
+    @csrf
+
+    {{fields}}
+
+    <button type="submit">Submit</button>
+</form>
