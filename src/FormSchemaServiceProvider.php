@@ -19,8 +19,8 @@ class FormSchemaServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes(
-          [__DIR__ . '/Templates' => resource_path('form-schema-templates')],
-          'form-schema-templates'
+            [__DIR__ . '/Templates' => resource_path('form-schema-templates')],
+            'form-schema-templates'
         );
 
         $this->publishes(
