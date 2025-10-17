@@ -62,14 +62,24 @@ Options:
 
 <br>
 
-### 2. Generate Blade Forms + FormRequest
+### 2. Generate Blade Forms and FormRequest
 ```sh
-php artisan form:generate
+php artisan form:generate-form
 ```
 
 Options:
 - `schema` → optional, path to a single JSON schema file
 - `--output=resources/views/custom_forms` → optional, save Blade forms in a custom folder
+
+<br>
+
+### 3. Generate JSON + Form Together
+```sh
+php artisan form:generate
+```
+
+This core command runs both `form:generate-json` and `form:generate-form` in sequence.
+Use it to generate everything (JSON schemas, Blade forms, and FormRequest classes) at once.
 
 <br>
 
@@ -82,14 +92,27 @@ php artisan form:generate-json --tables=users,posts
 
 This will create JSON files in `database/form_schemas/`.
 
+<br>
+
 ### 2. Generate Blade forms and FormRequests from JSON:
 ```sh
-php artisan form:generate
+php artisan form:generate-form
 ```
 
 This will generate:
 - Blade files in `resources/views/forms/`
 - FormRequest classes in `app/Http/Requests/`
+
+<br>
+
+### 3. Generate Both JSON and Forms in One Step:
+```sh
+php artisan form:generate
+```
+
+This will automatically:
+- Generate JSON schemas from the database
+- Generate Blade forms and FormRequests
 
 <br>
 
