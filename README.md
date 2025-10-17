@@ -146,4 +146,4 @@ Contributions are welcome! If you have ideas for improvement, bug fixes, or want
 <br>
 
 ## License
-MIT License
+[MIT License](?tab=MIT-1-ov-file)
