@@ -3,9 +3,9 @@
     "description": "Generate Blade forms and FormRequest classes from DB or JSON schemas!",
     "type": "library",
     "require": {
-            "illuminate/support": "12.*",
-            "illuminate/console": "12.*",
-            "illuminate/database": "12.*"
+        "illuminate/support": "12.*",
+        "illuminate/console": "12.*",
+        "illuminate/database": "12.*"
     },
     "license": "MIT",
     "autoload": {
@@ -19,12 +19,5 @@
             "email": "mbparvezme@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Forphp\\LaravelSchemaToForm\\FormSchemaServiceProvider"
-            ]
-        }
-    }
+    "minimum-stability": "dev"
 }

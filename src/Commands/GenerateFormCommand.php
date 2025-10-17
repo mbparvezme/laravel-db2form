@@ -14,7 +14,7 @@ class GenerateFormCommand extends Command
     /**
      * The name and signature of the console command.
      */
-    protected $signature = 'form:generate
+    protected $signature = 'form:generate-form
                             {schema? : Path to a single JSON schema file}
                             {--output= : Directory to save generated files}';
 
