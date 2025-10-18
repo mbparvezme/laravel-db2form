@@ -11,7 +11,8 @@ class FormSchemaServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        
+        // Works with the default style
+        $this->mergeConfigFrom(__DIR__ . '/Config/form-schema.php', 'form-schema');
     }
 
     public function boot(): void

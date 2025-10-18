@@ -31,49 +31,64 @@ class SchemaParser
      */
     public static function fromDb(string $tableName, array $columns): array
     {
-      $ignored = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by'];
-      $fields = [];
+        $ignored = ['id', 'created_at', 'updated_at', 'deleted_at', 'created_by', 'updated_by'];
+        $fields = [];
 
-      foreach ($columns as $col) {
-          if (in_array($col['name'], $ignored)) {
-              // Skip system fields
-              continue;
-          }
+        foreach ($columns as $col) {
+            if (in_array($col['name'], $ignored)) {
+                continue;
+            }
 
-          // Determine input type based on column type
-          $type = match ($col['type']) {
-              'string', 'varchar' => 'text',
-              'text' => 'textarea',
-              'email' => 'email',
-              'boolean', 'tinyint' => 'checkbox',
-              'integer', 'bigint' => 'number',
-              'date' => 'date',
-              'datetime', 'timestamp' => 'datetime-local',
-              default => 'text',
-          };
+            $name = strtolower($col['name']);
+            $colType = strtolower($col['type']);
 
-          // Determine validation rules
-          $rules = [];
-          if (!$col['nullable']) {
-              $rules[] = 'required';
-          }
+            // Determine input type
+            $type = match (true) {
+                str_contains($name, 'email') => 'email',
+                str_contains($name, 'password') => 'password',
+                str_contains($name, 'image') || str_contains($name, 'photo') || str_contains($name, 'avatar') => 'file',
+                str_contains($name, 'file') || str_contains($name, 'attachment') => 'file',
+                str_contains($name, 'url') => 'url',
+                str_contains($name, 'phone') || str_contains($name, 'mobile') => 'tel',
+                $colType === 'text' => 'textarea',
+                $colType === 'boolean' || $colType === 'tinyint' => 'checkbox',
+                in_array($colType, ['integer', 'bigint', 'smallint', 'decimal', 'float', 'double']) => 'number',
+                $colType === 'date' => 'date',
+                in_array($colType, ['datetime', 'timestamp']) => 'datetime-local',
+                $colType === 'enum' => 'select',
+                $colType === 'json' => 'textarea',
+                default => 'text',
+            };
 
-          // Type-based validation
-          if (Str::contains($type, ['email'])) {
-              $rules[] = 'email';
-          } elseif (Str::contains($type, ['number'])) {
-              $rules[] = 'numeric';
-          }
+            // Auto-detect ENUM options
+            $options = [];
+            if ($colType === 'enum' && isset($col['type_definition'])) {
+                // type_definition example: "enum('male','female','other')"
+                preg_match_all("/'([^']+)'/", $col['type_definition'], $matches);
+                if (!empty($matches[1])) {
+                    $options = $matches[1];
+                }
+            }
 
-          $field = [
-              'name' => $col['name'],
-              'type' => $type,
-              'label' => Str::title(str_replace('_', ' ', $col['name'])),
-              'rules' => implode('|', $rules),
-              'default' => $col['default'] ?? null,
-          ];
+            // Validation rules
+            $rules = [];
+            if (!$col['nullable']) {
+                $rules[] = 'required';
+            }
+            if (Str::contains($type, 'email')) {
+                $rules[] = 'email';
+            } elseif (Str::contains($type, 'number')) {
+                $rules[] = 'numeric';
+            }
 
-          $fields[] = $field;
+            $fields[] = [
+                'name' => $col['name'],
+                'type' => $type,
+                'label' => Str::title(str_replace('_', ' ', $col['name'])),
+                'rules' => implode('|', $rules),
+                'default' => $col['default'] ?? null,
+                'options' => $options,
+            ];
         }
 
         return [
@@ -82,4 +97,5 @@ class SchemaParser
             'fields' => $fields,
         ];
     }
+
 }
