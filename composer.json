@@ -19,7 +19,6 @@
             "email": "mbparvezme@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
