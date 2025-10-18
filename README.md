@@ -1,4 +1,4 @@
-# Laravel Schema To Form
+# Laravel Database To Form
 
 Automatically generate **Blade forms** and **Form request** classes from your database schemas or JSON schema files with `old()` support and built-in CSS styling.
 
