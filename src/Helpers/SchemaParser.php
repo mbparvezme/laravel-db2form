@@ -1,6 +1,6 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm\Helpers;
+namespace Mphp\LaravelDb2Form\Helpers;
 
 use Illuminate\Support\Str;
 

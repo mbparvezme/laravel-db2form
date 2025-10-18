@@ -1,5 +1,5 @@
 {
-    "name": "forphp/laravel-schema-to-form",
+    "name": "mphp/laravel-db2form",
     "description": "Generate Blade forms and FormRequest classes from DB or JSON schemas!",
     "type": "library",
     "require": {
@@ -10,7 +10,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Forphp\\LaravelSchemaToForm\\": "src/"
+            "Mphp\\LaravelDb2Form\\": "src/"
         }
     },
     "authors": [
@@ -23,7 +23,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Forphp\\LaravelSchemaToForm\\FormSchemaServiceProvider"
+                "Mphp\\LaravelDb2Form\\DB2FormServiceProvider"
             ]
         }
     }

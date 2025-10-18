@@ -1,11 +1,11 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm\Commands;
+namespace Mphp\LaravelDb2Form\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Forphp\LaravelSchemaToForm\Helpers\SchemaParser;
+use Mphp\LaravelDb2Form\Helpers\SchemaParser;
 
 class GenerateJsonCommand extends Command
 {

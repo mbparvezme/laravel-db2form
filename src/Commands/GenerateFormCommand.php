@@ -1,13 +1,13 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm\Commands;
+namespace Mphp\LaravelDb2Form\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use Forphp\LaravelSchemaToForm\Helpers\SchemaParser;
-use Forphp\LaravelSchemaToForm\Generators\BladeGenerator;
-use Forphp\LaravelSchemaToForm\Generators\RequestGenerator;
+use Mphp\LaravelDb2Form\Helpers\SchemaParser;
+use Mphp\LaravelDb2Form\Generators\BladeGenerator;
+use Mphp\LaravelDb2Form\Generators\RequestGenerator;
 
 class GenerateFormCommand extends Command
 {

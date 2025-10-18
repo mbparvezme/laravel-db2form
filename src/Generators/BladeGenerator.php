@@ -1,8 +1,8 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm\Generators;
+namespace Mphp\LaravelDb2Form\Generators;
 
-use Forphp\LaravelSchemaToForm\Helpers\SchemaParser;
+use Mphp\LaravelDb2Form\Helpers\SchemaParser;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
