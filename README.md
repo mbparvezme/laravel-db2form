@@ -1,6 +1,6 @@
 # Laravel Schema To Form
 
-Automatically generate **Blade** forms and **FormRequest** classes from your database schemas or JSON schema files.
+Automatically generate **Blade forms** and **Form request** classes from your database schemas or JSON schema files with `old()` support and built-in CSS styling.
 
 <br>
 
@@ -20,10 +20,12 @@ Author: [M B Parvez](https://mbparvez.me)
 
 - Generate JSON schemas from database tables.
 - Generate Blade forms automatically with:
+  - `old()` function for preserving input values
   - `required` attributes
   - Default values
   - Correct input types (`text`, `email`, `checkbox`, `textarea`, etc.)
-- Generate Laravel FormRequest classes with proper validation rules.
+  - Built-in CSS classes (Bootstrap or custom)
+- Generate Laravel **FormRequest** classes with proper validation rules.
 - Fully customizable templates for Blade and FormRequest.
 - Configurable FormRequest namespace and Blade output directory.
 
@@ -34,18 +36,7 @@ Install via Composer:
 ```sh
 composer require forphp/laravel-schema-to-form
 ```
-Laravel will auto-discover the package.
-
-<br>
-
-## Publish Templates and Config
-Publish templates and config if you want to customize:
-```sh
-php artisan vendor:publish --tag=form-schema-templates
-php artisan vendor:publish --tag=form-schema-config
-```
-- Templates: `resources/form-schema-templates`
-- Config: `config/form-schema.php`
+Laravel will auto-discover the package. No extra steps needed to use it.
 
 <br>
 
@@ -68,8 +59,8 @@ php artisan form:generate-form
 ```
 
 Options:
-- `schema` → optional, path to a single JSON schema file
-- `--output=resources/views/custom_forms` → optional, save Blade forms in a custom folder
+- `--schema=path/to/schema.json` → generate form for a single schema file
+- `--output=resources/views/custom_forms` → save Blade files in a custom folder
 
 <br>
 
@@ -102,6 +93,7 @@ php artisan form:generate-form
 This will generate:
 - Blade files in `resources/views/forms/`
 - FormRequest classes in `app/Http/Requests/`
+- Input fields automatically include old() values and CSS classes
 
 <br>
 
@@ -116,6 +108,78 @@ This will automatically:
 
 <br>
 
+## Publish Templates and Config (Optional)
+Publish templates and config if you want to customize:
+```sh
+php artisan vendor:publish --tag=form-schema-templates
+php artisan vendor:publish --tag=form-schema-config
+```
+- Templates: `resources/form-schema-templates`
+- Config: `config/form-schema.php`
+
+<br>
+
+## Configuration
+
+`config/form-schema.php`:
+
+```php
+return [
+    /*
+    |----------------------------------------------------------------------
+    | FormRequest Namespace
+    |----------------------------------------------------------------------
+    */
+    'request_namespace' => 'App\\Http\\Requests',
+
+    /*
+    |----------------------------------------------------------------------
+    | Blade Output Path
+    |----------------------------------------------------------------------
+    */
+    'blade_path' => resource_path('views/forms'),
+
+    /*
+    |----------------------------------------------------------------------
+    | Style Configuration
+    |----------------------------------------------------------------------
+    | 'style' => 'bootstrap' or 'custom'
+    */
+    'style' => 'bootstrap', // default style
+
+    'bootstrap_styles' => [
+        'form' => 'needs-validation',
+        'submit' => 'btn btn-primary',
+        'label' => 'form-label',
+        'text' => 'form-control',
+        'email' => 'form-control',
+        'password' => 'form-control',
+        'number' => 'form-control',
+        'textarea' => 'form-control',
+        'select' => 'form-select',
+        'checkbox' => 'form-check-input',
+        'radio' => 'form-check-input',
+    ],
+
+    'custom_styles' => [
+        'form' => 'space-y-4',
+        'submit' => 'bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700',
+        'label' => 'block font-medium mb-1',
+        'text' => 'border rounded px-3 py-2 w-full',
+        'email' => 'border rounded px-3 py-2 w-full',
+        'password' => 'border rounded px-3 py-2 w-full',
+        'number' => 'border rounded px-3 py-2 w-full',
+        'textarea' => 'border rounded px-3 py-2 w-full',
+        'select' => 'border rounded px-3 py-2 w-full',
+        'checkbox' => 'rounded text-blue-600 focus:ring-blue-500',
+        'radio' => 'text-blue-600 focus:ring-blue-500',
+    ],
+];
+
+```
+
+<br>
+
 ## Customizing Templates
 
 After publishing, you can edit:
@@ -123,15 +187,6 @@ After publishing, you can edit:
 - `resources/form-schema-templates/form.blade.php.template` → for custom Blade layout
 - `resources/form-schema-templates/request.php.template` → for custom FormRequest template
 
-<br>
-
-## Config Options
-```php
-return [
-    'request_namespace' => 'App\\Http\\Requests', // FormRequest namespace
-    'blade_path' => resource_path('views/forms'), // Blade output path
-];
-```
 <br>
 
 ## Contribution
