@@ -31,7 +31,7 @@ return [
     | - 'custom'    : Use your own CSS classes defined below.
     |
     */
-    'style' => 'custom',
+    'style' => 'bootstrap',
 
     /*
     |--------------------------------------------------------------------------
