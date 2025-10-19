@@ -2,6 +2,7 @@
     "name": "mphp/laravel-db2form",
     "description": "Generate Blade forms and FormRequest classes from DB or JSON schemas!",
     "type": "library",
+    "homepage": "https://www.mbparvez.me/projects/laravel-db2form",
     "require": {
         "illuminate/support": "12.*",
         "illuminate/console": "12.*",
@@ -16,8 +17,22 @@
     "authors": [
         {
             "name": "M B Parvez (Ron)",
-            "email": "mbparvezme@gmail.com"
+            "email": "mbparvezme@gmail.com",
+            "homepage": "https://www.mbparvez.me",
+            "role": "Developer"
         }
+    ],
+    "keywords": [
+        "laravel",
+        "form",
+        "blade",
+        "formrequest",
+        "db",
+        "database",
+        "form-generator",
+        "json to form",
+        "database to form",
+        "generator"
     ],
     "extra": {
         "laravel": {
