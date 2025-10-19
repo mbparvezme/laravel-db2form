@@ -1,13 +1,13 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm;
+namespace Mphp\LaravelDb2Form;
 
 use Illuminate\Support\ServiceProvider;
-use Forphp\LaravelSchemaToForm\Commands\GenerateFormCommand;
-use Forphp\LaravelSchemaToForm\Commands\GenerateJsonCommand;
-use Forphp\LaravelSchemaToForm\Commands\GenerateAllCommand;
+use Mphp\LaravelDb2Form\Commands\GenerateFormCommand;
+use Mphp\LaravelDb2Form\Commands\GenerateJsonCommand;
+use Mphp\LaravelDb2Form\Commands\GenerateAllCommand;
 
-class FormSchemaServiceProvider extends ServiceProvider
+class DB2FormServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

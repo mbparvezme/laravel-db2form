@@ -8,7 +8,7 @@ Automatically generate **Blade forms** and **Form request** classes from your da
 
 `laravel-schema-to-form`
 
-Composer: `forphp`
+Composer: `mbparvez`
 
 GitHub: [mbparvezme](https://github.com/mbparvezme)
 
@@ -34,7 +34,7 @@ Author: [M B Parvez](https://mbparvez.me)
 ## Installation
 Install via Composer:
 ```sh
-composer require forphp/laravel-schema-to-form
+composer require mphp/laravel-db2form
 ```
 Laravel will auto-discover the package. No extra steps needed to use it.
 
@@ -201,4 +201,4 @@ Contributions are welcome! If you have ideas for improvement, bug fixes, or want
 <br>
 
 ## License
-[MIT License](https://github.com/mbparvezme/laravel-schema-to-form?tab=MIT-1-ov-file)
+[MIT License](https://github.com/mbparvezme/laravel-db2form?tab=MIT-1-ov-file)

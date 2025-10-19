@@ -1,6 +1,6 @@
 <?php
 
-namespace Forphp\LaravelSchemaToForm\Commands;
+namespace Mphp\LaravelDb2Form\Commands;
 
 use Illuminate\Console\Command;
 
